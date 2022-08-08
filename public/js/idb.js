@@ -13,9 +13,9 @@ request.onupgradeneeded = function (event) {
 };
 
 // upon a successful
-request.onsucces = function (event) {
+request.onsuccess = function (event) {
     // when db is successfully created with its object store (from onupgradeneeded event above) or simply established a connection, save reference to db in global variable
-    db = event.target.result;
+    const db = event.target.result;
 
     // check if app is online, if yes run uploadBudget() function to send all local db data to api
     if (navigator.onLine) {
@@ -24,7 +24,7 @@ request.onsucces = function (event) {
 };
 
 request.onerror = function (event) {
-    // log error ehre
+    // log error here
     console.log(event.target.errorCode);
 };
 
@@ -37,4 +37,3 @@ function saveRecord(record) {
     // add record to your store with add method
     budgetObjectStore.add(record);
 };
-
